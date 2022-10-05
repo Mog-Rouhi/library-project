@@ -18,6 +18,9 @@ const app = express();
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
+//config sessions
+require('./config/session.config')(app);
+
 // default value for title local
 const capitalized = require("./utils/capitalized");
 const projectName = "library-project";
@@ -32,6 +35,14 @@ app.use("/", index);
 
 const bookRoutes = require("./routes/book.routes");
 app.use("/", bookRoutes)
+
+
+const authorRoutes = require("./routes/author.routes");
+app.use("/", authorRoutes)
+
+
+const authRoutes = require("./routes/auth.routes");
+app.use("/", authRoutes)
 
 
 
